@@ -1,0 +1,70 @@
+<!--
+  @description       : 
+  @author            : Somnath Sharma
+  @group             : 
+  @last modified on  : 12-24-2025
+  @last modified by  : Somnath Sharma
+-->
+<template>
+    <div class="slds-card slds-m-around_medium">
+        <div class="slds-card__header slds-grid slds-p-around_small">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__figure">
+                    <span class="slds-icon_container slds-icon-standard-password" title="Refresh">
+                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                            <use xlink:href="/_slds/icons/standard-sprite/svg/symbols.svg#password"></use>
+                        </svg>
+                    </span>
+                </div>
+                <div class="slds-media__body">
+                    <h2 class="slds-card__header-title slds-truncate" title="Refresh Token Viewer">
+                        Refresh Token Viewer
+                    </h2>
+                    <p class="slds-text-title slds-m-top_xx-small">Calls Apex
+                        RefreshTokenFlowImplementationLWC.fetchTop5Aura() and shows results</p>
+                </div>
+            </header>
+            <div class="slds-no-flex">
+                <lightning-button label="Refresh Token Query" variant="brand" onclick={handleRefresh}
+                    disabled={isLoading}></lightning-button>
+            </div>
+        </div>
+
+        <div class="slds-card__body slds-card__body_inner">
+            <template if:true={isLoading}>
+                <div class="slds-is-relative slds-p-vertical_large">
+                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                </div>
+            </template>
+
+            <template if:true={errorMessage}>
+                <div class="slds-notify slds-notify_alert slds-theme_error slds-m-bottom_small" role="alert">
+                    <span class="slds-assistive-text">error</span>
+                    <h2>{errorMessage}</h2>
+                </div>
+            </template>
+
+            <template if:true={records}>
+                <div class="slds-p-around_small">
+                    <div class="slds-text-title_caps slds-m-bottom_x-small">Top 5 Accounts</div>
+                    <ul class="slds-has-dividers_around-space">
+                        <template for:each={records} for:item="row">
+                            <li key={row.Id} class="slds-item">
+                                <span class="slds-text-title_bold">{row.Name}</span>
+                                <span class="slds-text-color_weak slds-m-left_small">({row.Id})</span>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+                <details class="slds-m-top_small">
+                    <summary class="slds-text-title_caps">Raw JSON</summary>
+                    <pre class="code-block">{rawJson}</pre>
+                </details>
+            </template>
+
+            <template if:true={hasNoData}>
+                <div class="slds-text-color_weak slds-p-around_small">No records returned.</div>
+            </template>
+        </div>
+    </div>
+</template>
