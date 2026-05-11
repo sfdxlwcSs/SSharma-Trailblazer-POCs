@@ -5,9 +5,7 @@
     <consumerSecret>Placeholder_Value</consumerSecret>
     <friendlyName>RefreshTokenAuthProvider</friendlyName>
     <includeOrgIdInIdentifier>true</includeOrgIdInIdentifier>
-    <isPkceEnabled>false</isPkceEnabled>
     <providerType>Salesforce</providerType>
-    <requireMfa>false</requireMfa>
     <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
     <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
     <sendSecretInApis>false</sendSecretInApis>

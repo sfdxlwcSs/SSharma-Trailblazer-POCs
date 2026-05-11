@@ -1,0 +1,22 @@
+.container {
+    padding: 1rem;
+}
+
+.button-area {
+    margin-bottom: 1rem;
+}
+
+.stop-button {
+    margin-left: 10px;
+}
+
+.status-box {
+    margin-bottom: 1rem;
+}
+
+.scanner-video {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    border: 2px solid #ddd;
+}
